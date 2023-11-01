@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <title>Thymeleaf</title>
+  </head>
+  <body>
+    <h2>
+      Hello
+      <span sec:authorize="isAuthenticated()">
+        Admin
+        <span sec:authentication="name">Default</span>
+      </span>
+      <span sec:authorize="isAnonymous()">User</span>
+    </h2>
+
+  </body>
+</html>
