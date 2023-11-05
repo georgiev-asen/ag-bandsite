@@ -46,7 +46,7 @@ public class SecurityConfig {
                       .requestMatchers("/admin/**").authenticated()
                       .requestMatchers("/**").permitAll()
       )
-      .formLogin(formLogin -> formLogin.loginPage("/login"))
+      .formLogin(formLogin -> formLogin.loginPage("/login").failureUrl("/login?error=true"))
       .logout(logout -> logout.logoutSuccessUrl("/"));
 
     return http.build();

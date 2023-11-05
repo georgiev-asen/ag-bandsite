@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8">
-    <title>Thymeleaf</title>
-  </head>
+  <head th:replace="~{common/common::head}"></head>
   <body>
-    <h2>
+  <header th:replace="~{common/common::nav}"></header>
+  <h2>
       Hello
       <span sec:authorize="isAuthenticated()">
         Admin
@@ -13,6 +11,6 @@
       </span>
       <span sec:authorize="isAnonymous()">User</span>
     </h2>
-
+    <footer th:replace="~{common/common::footer}"></footer>
   </body>
 </html>

@@ -1,8 +1,11 @@
 <html xmlns:th="https://www.thymeleaf.org">
+  <head th:replace="~{common/common::head}"></head>
   <body>
-    <form name="f" th:action="@{/login}" method="post">
+  <header th:replace="~{common/common::nav}"></header>
+  <form name="f" th:action="@{/login}" method="post">
       <fieldset>
         <legend>Please Login</legend>
+        <h2 th:if="${error}">Username or password incorrect!</h2>
         <label for="username">Username</label>
         <input type="text" id="username" name="username"/>
         <label for="password">Password</label>
@@ -12,5 +15,6 @@
         </div>
       </fieldset>
     </form>
+    <footer th:replace="~{common/common::footer}"></footer>
   </body>
 </html>

@@ -1,17 +1,34 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{common/common::head}"></head>
   <body>
-    <h1>Register</h1>
-    <form action="/admin/register" th:object="${user}" method="POST">
+  <header th:replace="~{common/common::nav}"></header>
+  <h1>Register</h1>
+    <h2 th:if="${userExistsError}">User with that username already exists!</h2>
+    <form th:action="@{/admin/register}" th:object="${registerUserDto}" th:method="POST">
       <div>
         <label>Username</label>
         <input type="text" th:field="*{username}"/>
+        <small th:if="${#fields.hasErrors('username')}"
+               th:errors="*{username}" class="text-danger">Username error message</small>
       </div>
       <div>
         <label>Password</label>
         <input type="password" th:field="*{password}"/>
+        <small th:if="${#fields.hasErrors('password')}"
+               th:errors="*{password}" class="text-danger">Password error message</small>
       </div>
+      <div>
+        <label>Confirm Password</label>
+        <input type="password" th:field="*{confirmPassword}"/>
+      </div>
+      <small
+      th:if="${passwordMatchError}"
+      >
+        Passwords do not match!
+      </small>
       <button type="submit">Submit</button>
     </form>
+    <footer th:replace="~{common/common::footer}"></footer>
   </body>
 </html>

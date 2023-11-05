@@ -1,7 +1,7 @@
 package com.app.bandsite.services.impl;
 
 import com.app.bandsite.exceptions.UserExistsException;
-import com.app.bandsite.model.dtos.UserDto;
+import com.app.bandsite.model.dtos.RegisterUserDto;
 import com.app.bandsite.model.entities.User;
 import com.app.bandsite.model.enums.Role;
 import com.app.bandsite.repositories.UserRepository;
@@ -25,15 +25,22 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public User registerNewUserAccount(UserDto accountDto) throws UserExistsException {
+  public boolean validatePasswordMatch(RegisterUserDto registerUserDto) {
+    return registerUserDto.getPassword().equals(registerUserDto.getConfirmPassword());
+  }
+
+  @Override
+  public User registerNewUserAccount(RegisterUserDto accountDto) throws UserExistsException {
     if (userRepository.existsById(accountDto.getUsername())) {
       throw new UserExistsException(
-              "There is an account with that email adress:" + accountDto.getUsername());
+              "There is an account with that username:" + accountDto.getUsername());
     }
     User user = new User();
     user.setPassword(passwordEncoder.encode(accountDto.getPassword()));
 
     user.setUsername(accountDto.getUsername());
+
+//    Hardcoded until more roles are added
     user.setRoles(List.of(Role.ADMIN));
     return userRepository.save(user);
   }
