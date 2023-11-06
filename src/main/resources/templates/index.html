@@ -1,16 +1,83 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-  <head th:replace="~{common/common::head}"></head>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        th:include="~{common/wrapper::wrapper}"
+>
   <body>
-  <header th:replace="~{common/common::nav}"></header>
-  <h2>
-      Hello
-      <span sec:authorize="isAuthenticated()">
-        Admin
-        <span sec:authentication="name">Default</span>
-      </span>
-      <span sec:authorize="isAnonymous()">User</span>
-    </h2>
-    <footer th:replace="~{common/common::footer}"></footer>
+    <div th:fragment="content">
+      <h2>
+        Hello
+        <span sec:authorize="isAuthenticated()">
+          Admin
+          <span sec:authentication="name">Default</span>
+        </span>
+          <span sec:authorize="isAnonymous()">User</span>
+      </h2>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      Hi
+    </div>
   </body>
 </html>
