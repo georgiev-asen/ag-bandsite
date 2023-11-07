@@ -14,6 +14,9 @@ RUN --mount=type=cache,target=/root/.m2 ./mvnw -f $HOME/pom.xml clean package -D
 #
 FROM eclipse-temurin:17-jre-jammy
 ARG JAR_FILE=/usr/app/target/*.jar
+ARG DEV_CONFIG_LOCATION=/usr/app/resources/application.properties
+ARG DEV_CONFIG_LOCATION=/usr/app/resources/application.properties
+
 COPY --from=build $JAR_FILE /app/bandsite.jar
 EXPOSE 8080
 ENTRYPOINT java -jar /app/bandsite.jar
