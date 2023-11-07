@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+>
+  <body>
+    <table th:fragment="event-table" class="table text-success w-75">
+      <tbody th:each="event : ${events}">
+      <tr th:replace="~{common/event::event-row}"></tr>
+      <tr th:replace="~{common/event::event-row}"></tr>
+      </tbody>
+    </table>
+  </body>
+</html>

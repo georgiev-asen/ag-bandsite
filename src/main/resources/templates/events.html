@@ -1,0 +1,12 @@
+<html
+        xmlns:th="https://www.thymeleaf.org"
+        th:insert="~{common/wrapper::wrapper}"
+>
+<body>
+  <div class="d-flex flex-column align-items-center" th:fragment="content">
+    <h1 class="display-1">Upcoming Events</h1>
+
+    <table th:replace="~{common/event-table::event-table}"></table>
+  </div>
+</body>
+</html>

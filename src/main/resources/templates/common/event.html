@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+>
+  <body>
+    <table>
+      <tbody>
+        <tr th:fragment="event-row" class="row">
+          <td class="col-lg-4">
+            <img class="mh-100 mw-100" th:src="@{${event.imgUrl}}" alt="Doggo missing!"/>
+          </td>
+
+          <td class="col-lg-8 text-center d-flex flex-column justify-content-evenly">
+            <div>
+              <h1 th:text="${event.title}">Fallback Event Name</h1>
+            </div>
+            <div>
+              <p th:text="${#temporals.formatISO(event.eventDate)}">2000-02-01</p>
+            </div>
+            <div>
+              <p>Admission fee: <span th:text="${event.admission}">20.0$</span></p>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

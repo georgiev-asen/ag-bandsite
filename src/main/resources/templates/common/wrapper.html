@@ -7,27 +7,31 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>A-Grupata</title>
-    <link rel="stylesheet" th:href="@{/reset-css.css}"/>
-    <link rel="stylesheet" th:href="@{/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/reset-css.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <script src="js/bootstrap.min.js"></script>
   </head>
   <body>
-    <div class="d-flex flex-column min-vh-100">
+    <div class="d-flex flex-column min-vh-100 bg-black text-success">
       <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <div class="container-fluid">
             <div class="collapse navbar-collapse d-flex justify-content-between">
               <ul class="navbar-nav">
-                <li class="nav-item col-md-4">
-                  <a class="nav-link my-text-color active h5 " th:href="@{/}">Home</a>
+                <li class="nav-item">
+                  <a class="nav-link " th:href="@{/}">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link " th:href="@{/events}">Events</a>
                 </li>
               </ul>
 
               <ul sec:authorize="isAuthenticated()" class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link my-text-color active h5 " th:href="@{/admin/register}">Register admin</a>
+                  <a class="nav-link" th:href="@{/admin/register}">Register admin</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link my-text-color active h5 " th:href="@{/logout}">Logout</a>
+                  <a class="nav-link" th:href="@{/logout}">Logout</a>
                 </li>
               </ul>
             </div>
@@ -35,9 +39,9 @@
         </nav>
       </header>
 
-      <div class="container-fluid text-center flex-fill py-4"  th:insert="~{this::content}"></div>
+      <div class="container-fluid flex-fill text-center py-4"  th:insert="~{this::content}"></div>
 
-      <footer class="text-center w-100">
+      <footer class="text-center w-100 text-success">
         <h5>
           &copy; A-Grupata. All rights reserved.
         </h5>
