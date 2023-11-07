@@ -1,8 +1,6 @@
 package com.app.bandsite.controllers;
 
 import com.app.bandsite.model.dtos.EventDto;
-import com.app.bandsite.repositories.EventRepository;
-import com.app.bandsite.repositories.UserRepository;
 import com.app.bandsite.services.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,7 +16,7 @@ public class HomeController {
   private final EventService eventService;
 
   @Autowired
-  public HomeController(EventService eventService, UserRepository userRepository, EventRepository eventRepository, PasswordEncoder passwordEncoder) {
+  public HomeController(EventService eventService, PasswordEncoder passwordEncoder) {
     this.eventService = eventService;
   }
 
