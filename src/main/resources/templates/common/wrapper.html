@@ -14,7 +14,7 @@
   <body>
     <div class="d-flex flex-column min-vh-100 bg-black text-success">
       <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="height: 3rem">
           <div class="container-fluid">
             <div class="collapse navbar-collapse d-flex justify-content-between">
               <ul class="navbar-nav">
@@ -39,7 +39,7 @@
         </nav>
       </header>
 
-      <div class="container-fluid flex-fill text-center py-4"  th:insert="~{this::content}"></div>
+      <div class="container-fluid flex-fill text-center py-4 mt-5"  th:insert="~{this::content}"></div>
 
       <footer class="text-center w-100 text-success">
         <h5>
