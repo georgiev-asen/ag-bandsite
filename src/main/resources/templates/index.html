@@ -4,36 +4,39 @@
         th:insert="~{common/wrapper::wrapper}"
 >
   <body>
-    <div class="d-flex flex-column align-items-center" th:fragment="content">
-      <img class="w-75" src="https://hips.hearstapps.com/hmg-prod/images/cute-photos-of-cats-looking-at-camera-1593184780.jpg"/>
+    <div class="d-flex flex-column align-items-center my-4" th:fragment="content">
+      <img class="d-block w-50" src="img/band-logo.png"/>
 
       <h1 class="display-1 py-2">A-Grupata</h1>
 
-      <div class="d-flex flex-column my-4 align-items-center">
-        <a th:href="@{/events}" class="w-100 text-start px-2 h3 display-3 text-decoration-none text-success">Events</a>
+      <a th:href="@{/events}" class="w-100 text-start px-2 h3 display-3 text-decoration-none text-success">Events</a>
 
-        <table th:replace="~{common/event-table::event-table}"></table>
-      </div>
+      <table th:replace="~{common/event-table::event-table}"></table>
 
-      <h2 class="display-2 py-2">Meet the Band</h2>
+      <div class="d-flex flex-column align-items-center w-100">
+        <h2 class="display-2 py-2">Meet the Band</h2>
 
-      <div id="membersCarousel" class="carousel slide w-75">
-        <div class="carousel-inner">
-          <div class="carousel-item">
-            <img src="https://as2.ftcdn.net/v2/jpg/05/85/06/79/1000_F_585067989_N59ojLL6Q7jTzwmSbcLw6vIupLcMg8xO.jpg" class="d-block w-100" alt="Cat 1">
+        <div id="membersCarousel" class="carousel slide w-75">
+          <div class="carousel-inner">
+            <div th:each="bandMember : ${bandMembers}" class="carousel-item text-center"
+                 th:classappend="${bandMemberStat.count <= 1 ? 'active' : ''}"
+            >
+              <img th:src="${bandMember.imgUrl}" alt="Band Member Image Missing!" class="vh-60 vw-25 object-fit-cover">
+
+              <h3 class="display-3 text-white" th:text="${bandMember.name}"></h3>
+              <h4 class="display-4 text-white" th:text="${bandMember.position}"></h4>
+            </div>
           </div>
-          <div class="carousel-item active">
-            <img src="https://as2.ftcdn.net/v2/jpg/02/00/31/83/1000_F_200318357_Q4jIVGZWSCmvVAnxkVY8kwL0MjQziN9z.jpg" alt="Cat 2" class="d-block w-100">
-          </div>
+
+          <button class="carousel-control-prev" type="button" data-bs-target="#membersCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#membersCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#membersCarousel" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#membersCarousel" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
       </div>
 
       <div  class="d-flex flex-column align-items-center">

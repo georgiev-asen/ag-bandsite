@@ -5,8 +5,7 @@
   <body>
     <table th:fragment="event-table" class="table text-success w-75">
       <tbody th:each="event : ${events}">
-      <tr th:replace="~{common/event::event-row}"></tr>
-      <tr th:replace="~{common/event::event-row}"></tr>
+        <tr th:replace="~{common/event::event-row}"></tr>
       </tbody>
     </table>
   </body>

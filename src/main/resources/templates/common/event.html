@@ -7,7 +7,7 @@
       <tbody>
         <tr th:fragment="event-row" class="row">
           <td class="col-lg-4">
-            <img class="mh-100 mw-100" th:src="@{${event.imgUrl}}" alt="Doggo missing!"/>
+            <img class="vh-25 mw-100 object-fit-cover" th:src="@{${event.imgUrl}}" alt="Doggo missing!"/>
           </td>
 
           <td class="col-lg-8 text-center d-flex flex-column justify-content-evenly">
@@ -15,7 +15,7 @@
               <h1 th:text="${event.title}">Fallback Event Name</h1>
             </div>
             <div>
-              <p th:text="${#temporals.formatISO(event.eventDate)}">2000-02-01</p>
+              <p th:text="${#temporals.format(event.eventDate, 'dd-MM-yyyy')}">2000-02-01</p>
             </div>
             <div>
               <p>Admission fee: <span th:text="${event.admission}">20.0$</span></p>

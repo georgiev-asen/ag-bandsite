@@ -7,8 +7,8 @@ import com.app.bandsite.services.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class EventServiceImpl implements EventService {
@@ -22,11 +22,16 @@ public class EventServiceImpl implements EventService {
 
   @Override
   public List<EventDto> findAllEvents() {
+    return findAllEvents(false);
+  }
+
+  @Override
+  public List<EventDto> findAllEvents(boolean isCompleteDto) {
     List<Event> events = eventRepository.findAll();
 
-    List<EventDto> eventDtos = events.stream().map(event -> mapEventToDto(event, false)).toList();
+    if (events.size() == 0) return new ArrayList<EventDto>();
 
-    return eventDtos;
+    return events.stream().map(event -> mapEventToDto(event, isCompleteDto)).toList();
   }
 
 
