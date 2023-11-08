@@ -25,7 +25,6 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: eclipse-temurin:17-jdk-jammy
 
     services:
       postgres:
