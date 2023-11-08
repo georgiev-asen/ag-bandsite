@@ -46,6 +46,8 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Run Unit Tests
+        env:
+          PG_HOST: postgres
         run: |
           chmod 777 -R ./mvnw
           ./mvnw test
