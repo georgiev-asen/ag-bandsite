@@ -60,7 +60,7 @@ jobs:
       - name: Build and push container image to registry
         uses: docker/build-push-action@v4
         env:
-          PG_PORT: ${{ job.services.postgres.ports['5432'] }}
+          PG_PORT: 1234
         with:
           push: true
           tags: ghcr.io/${{ env.REPO }}:${{ github.sha }}
