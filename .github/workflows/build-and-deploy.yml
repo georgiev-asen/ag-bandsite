@@ -22,17 +22,17 @@ permissions:
   packages: 'write'
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
+    container: eclipse-temurin:17-jdk-jammy
 
     services:
       postgres:
-        image: postgres:15.4
+        image: postgres:15
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: 12345
-          POSTGRES_DB: postgres
-          POSTGRES_PORT: 5432
+          POSTGRES_DB: bandsite
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -40,6 +40,20 @@ jobs:
           --health-retries 5
         ports:
           - 5432:5432
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Unit Tests
+        env:
+          PG_HOST: postgres
+        run: |
+          chmod 777 -R ./mvnw
+          ./mvnw test
+
+  build:
+    runs-on: ubuntu-latest
+    needs: test
 
     steps:
       - uses: actions/checkout@v4

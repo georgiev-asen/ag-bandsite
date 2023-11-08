@@ -7,5 +7,5 @@ import java.util.List;
 public interface EventService {
 
   List<EventDto> findAllEvents();
-
+  List<EventDto> findAllEvents(boolean isCompleteDto);
 }

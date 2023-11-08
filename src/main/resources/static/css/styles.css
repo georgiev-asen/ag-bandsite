@@ -1,0 +1,26 @@
+.vh-60 {
+  height: 60vh;
+}
+
+.vh-25 {
+  height: 25vh;
+}
+
+.vw-25 {
+  width: 25vw;
+}
+
+.object-fit-cover {
+   object-fit: cover
+}
+
+.ratio-band-member {
+    --bs-aspect-ratio: 250%
+}
+.h-80 {
+   height: 80%
+}
+
+.w-30 {
+   width: 30%
+}
