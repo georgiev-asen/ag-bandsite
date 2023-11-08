@@ -3,8 +3,11 @@
 FROM eclipse-temurin:17-jdk-jammy AS build
 ENV HOME=/usr/app
 
-ARG PG_PORT=2222
+ARG PG_PORT=5432
 ENV ENV_PG_PORT=$PG_PORT
+
+ARG PG_HOST=localhost
+ENV ENV_PG_HOST=$PG_HOST
 
 RUN mkdir -p $HOME
 WORKDIR $HOME
