@@ -24,7 +24,7 @@ public class AdminController {
 
   @GetMapping
   public String adminIndex(){
-    return "index";
+    return "redirect:/home";
   }
 
   @PostMapping("/register")

@@ -42,6 +42,7 @@
       <div class="container-fluid flex-fill text-center py-4 mt-5"  th:insert="~{this::content}"></div>
 
       <footer class="text-center w-100 text-success">
+        <a sec:authorize="isAnonymous()" class="text-success" th:href="@{/admin}">For band members</a>
         <h5>
           &copy; A-Grupata. All rights reserved.
         </h5>
