@@ -43,6 +43,8 @@ jobs:
           - 5432:5432
 
     steps:
+      - uses: actions/checkout@v4
+
       - name: Run Unit Tests
         run: |
           chmod 777 -R ./mvnw
