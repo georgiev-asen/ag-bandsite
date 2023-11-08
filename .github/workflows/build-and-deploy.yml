@@ -23,6 +23,16 @@ permissions:
   packages: 'write'
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: eclipse-temurin:17-jdk-jammy
+
+    steps:
+      - name: Run Unit Tests
+        run: |
+          chmod +x mvnw
+          ./mvnw test
+
   build:
     runs-on: ubuntu-latest
 
@@ -56,11 +66,6 @@ jobs:
 
       - name: Lowercase the repo name
         run: echo "REPO=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
-
-      - name: Run Unit Tests
-        run: |
-          chmod +x mvnw
-          ./mvnw test
 
       - name: Build and push container image to registry
         uses: docker/build-push-action@v4
