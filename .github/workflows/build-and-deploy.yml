@@ -25,6 +25,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container: eclipse-temurin:17-jdk-jammy
 
     services:
       postgres:
@@ -57,14 +58,14 @@ jobs:
       - name: Lowercase the repo name
         run: echo "REPO=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
 
+      - name: Run Unit Tests
+        run: ./mvnw test
+
       - name: Build and push container image to registry
         uses: docker/build-push-action@v4
         with:
           push: true
           tags: ghcr.io/${{ env.REPO }}:${{ github.sha }}
-          build-args: |
-            PG_HOST=postgres
-            PG_PORT=5432
           file: ./Dockerfile
 
   deploy:
